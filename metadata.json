@@ -1,0 +1,6 @@
+{
+  "name": "Kollam District Maratha Welfare Association",
+  "description": "Official web portal of Kollam District Maratha Welfare Association (Regd. No. KLM/TC/101/2024), Kollam, Kerala. Dedicated member resources, taluk units, welfare schemes, matrimonial portal, digital ID cards, and executive directory.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

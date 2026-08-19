@@ -1,0 +1,78 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function
+    function isValidMember() {
+      return request.resource.data.name is string &&
+             request.resource.data.name.size() > 0;
+    }
+
+    // Active Members Directory
+    match /members/{memberId} {
+      allow read: if true;
+      allow create, update: if isValidMember();
+      allow delete: if true;
+    }
+
+    // Pending Member Registrations
+    match /pending_members/{memberId} {
+      allow read: if true;
+      allow create: if isValidMember();
+      allow update, delete: if true;
+    }
+
+    // Executive Committee
+    match /committee_members/{committeeId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Association Notifications
+    match /notifications/{notifId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Advertisements
+    match /advertisements/{adId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Daily Gold & Silver Rates
+    match /gold_rates/{rateId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Gold Rate Promotions & Slides
+    match /gold_promos/{promoId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Association Events
+    match /events/{eventId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Media Gallery Items
+    match /gallery/{galleryId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // App Settings & Deleted Tombstones
+    match /app_settings/{settingId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // System Metadata
+    match /system_meta/{metaId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}

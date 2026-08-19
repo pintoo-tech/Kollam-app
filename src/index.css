@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@media print {
+  /* Hide unnecessary web elements and dialog backdrops during card print */
+  body {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* When printing card, isolate the printable element */
+  body.printing-digital-card * {
+    visibility: hidden !important;
+  }
+
+  body.printing-digital-card #printable-digital-id-card,
+  body.printing-digital-card #printable-digital-id-card * {
+    visibility: visible !important;
+  }
+
+  body.printing-digital-card #printable-digital-id-card {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 auto !important;
+    max-width: 460px !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    border: 2px solid #f59e0b !important;
+    background: #0d0a08 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    page-break-inside: avoid !important;
+  }
+
+  @page {
+    size: auto;
+    margin: 10mm;
+  }
+}

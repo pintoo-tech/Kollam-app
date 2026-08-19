@@ -1,0 +1,186 @@
+{
+  "entities": {
+    "Member": {
+      "title": "Member",
+      "description": "Registered or pending member of Kollam District Maratha Welfare Association",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "memberId": { "type": "string" },
+        "name": { "type": "string" },
+        "roll": { "type": "string" },
+        "roll2": { "type": "string" },
+        "talukUnit": { "type": "string" },
+        "houseName": { "type": "string" },
+        "place": { "type": "string" },
+        "district": { "type": "string" },
+        "placeMH": { "type": "string" },
+        "districtMH": { "type": "string" },
+        "address": { "type": "string" },
+        "addressMH": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "bloodGroup": { "type": "string" },
+        "maritalStatus": { "type": "string" },
+        "familyMembersCount": { "type": "number" },
+        "joiningYear": { "type": "number" },
+        "status": { "type": "string" },
+        "password": { "type": "string" },
+        "hasChangedPasscode": { "type": "boolean" },
+        "avatarUrl": { "type": "string" },
+        "dob": { "type": "string" }
+      },
+      "required": ["id", "memberId", "name", "phone"]
+    },
+    "ExecutiveMember": {
+      "title": "ExecutiveMember",
+      "description": "Executive committee member or district office bearer",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "designation": { "type": "string" },
+        "talukUnit": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "portfolio": { "type": "string" },
+        "priority": { "type": "number" }
+      },
+      "required": ["id", "name", "designation", "phone"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "Association announcement or alert",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "date": { "type": "string" },
+        "category": { "type": "string" },
+        "isUrgent": { "type": "boolean" },
+        "imageUrl": { "type": "string" }
+      },
+      "required": ["id", "title", "message", "date"]
+    },
+    "AdvertisementSlide": {
+      "title": "AdvertisementSlide",
+      "description": "Community banner or business partner ad",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "sponsor": { "type": "string" },
+        "targetUrl": { "type": "string" }
+      },
+      "required": ["id", "title", "imageUrl"]
+    },
+    "GoldRates": {
+      "title": "GoldRates",
+      "description": "Daily Kerala gold and silver rates",
+      "type": "object",
+      "properties": {
+        "rate22_1g": { "type": "string" },
+        "rate22_8g": { "type": "string" },
+        "rate24_1g": { "type": "string" },
+        "rate24_8g": { "type": "string" },
+        "silver_1g": { "type": "string" },
+        "silver_1kg": { "type": "string" },
+        "lastUpdated": { "type": "string" }
+      },
+      "required": ["rate22_1g", "rate22_8g"]
+    },
+    "GoldRatePromo": {
+      "title": "GoldRatePromo",
+      "description": "Gold rate poster advertisement slide",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "imageUrl": { "type": "string" }
+      },
+      "required": ["id", "title", "imageUrl"]
+    },
+    "AssociationEvent": {
+      "title": "AssociationEvent",
+      "description": "Kollam Maratha association events and cultural gatherings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "venue": { "type": "string" },
+        "talukUnit": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "status": { "type": "string" },
+        "imageUrl": { "type": "string" }
+      },
+      "required": ["id", "title", "date", "venue"]
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "Photo archive item and memory gallery",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "date": { "type": "string" },
+        "category": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "caption": { "type": "string" }
+      },
+      "required": ["id", "title", "imageUrl"]
+    }
+  },
+  "firestore": {
+    "/members/{memberId}": {
+      "schema": "Member",
+      "description": "Active registered members of Kollam Maratha Welfare Association"
+    },
+    "/pending_members/{memberId}": {
+      "schema": "Member",
+      "description": "Pending membership registration applications"
+    },
+    "/committee_members/{committeeId}": {
+      "schema": "ExecutiveMember",
+      "description": "Association executive committee officials"
+    },
+    "/notifications/{notifId}": {
+      "schema": "Notification",
+      "description": "Association announcements and circulars"
+    },
+    "/advertisements/{adId}": {
+      "schema": "AdvertisementSlide",
+      "description": "Community banner ads"
+    },
+    "/events/{eventId}": {
+      "schema": "AssociationEvent",
+      "description": "Association cultural events and meetings"
+    },
+    "/gallery/{galleryId}": {
+      "schema": "GalleryItem",
+      "description": "Photo archive and memory gallery items"
+    },
+    "/gold_rates/{rateId}": {
+      "schema": "GoldRates",
+      "description": "Daily market gold rates"
+    },
+    "/gold_promos/{promoId}": {
+      "schema": "GoldRatePromo",
+      "description": "Daily gold rate promo banner cards"
+    },
+    "/app_settings/{settingId}": {
+      "schema": "object",
+      "description": "System configuration and application settings"
+    },
+    "/system_meta/{metaId}": {
+      "schema": "object",
+      "description": "Metadata for system initialization"
+    }
+  }
+}
